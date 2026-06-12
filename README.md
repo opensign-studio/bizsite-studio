@@ -12,6 +12,7 @@ Find small businesses that need a website, research them deeply, and build, test
 | Skill | `business-research` | Fact gathering + verification rules + real-photo acquisition pipeline |
 | Skill | `site-builder` | Design playbook, static-site template, favicon/fonts, test suite, add-ons |
 | Skill | `launch-and-domains` | GitHub, Vercel (main-only deploys), ranked domain table with buy links |
+| Skill | `outreach` | Personable pitch emails: draft → user review → send via Gmail; follow-up rules; no fabricated claims about the business or the user |
 
 ## Requirements
 
