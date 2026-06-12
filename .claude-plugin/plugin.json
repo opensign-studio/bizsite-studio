@@ -1,10 +1,17 @@
 {
   "name": "bizsite-studio",
-  "version": "0.1.0",
-  "description": "Find small businesses that need a website, research them deeply (reviews, photos, hours, brand), and build, test, and launch a polished static site — with domain suggestions, GitHub, and Vercel deployment.",
+  "version": "0.2.0",
+  "description": "Find small businesses that need a website, research them deeply (reviews, photos, hours, brand), and build, test, and launch a polished static site \u2014 with domain suggestions, GitHub, and Vercel deployment.",
   "author": {
     "name": "David Morgan"
   },
-  "keywords": ["website", "small-business", "research", "vercel", "static-site", "prospecting"],
+  "keywords": [
+    "website",
+    "small-business",
+    "research",
+    "vercel",
+    "static-site",
+    "prospecting"
+  ],
   "license": "MIT"
 }
