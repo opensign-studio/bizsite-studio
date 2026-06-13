@@ -1,7 +1,7 @@
 {
   "name": "bizsite-studio",
-  "version": "0.3.0",
-  "description": "Find small businesses that need a website, research them deeply (reviews, photos, hours, brand), and build, test, and launch a polished static site \u2014 with domain suggestions, GitHub, and Vercel deployment.",
+  "version": "0.4.0",
+  "description": "Find small businesses that need a website, research them deeply (reviews, photos, hours, brand), and build, test, and launch a polished static site in one of several distinct design directions (style packs) \u2014 with domain suggestions, GitHub, and Vercel deployment.",
   "author": {
     "name": "David Morgan"
   },

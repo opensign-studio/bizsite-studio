@@ -1,17 +1,35 @@
-# Design Playbook
+# Design Playbook — shared craft
 
-The visual system that produced the Tryst Hair Salon result. Reuse the bones; re-skin per business.
+This file is the **shared craft** every site uses regardless of look: palette
+derivation, typography fundamentals, font self-hosting, favicons, and
+micro-interactions.
+
+**Structure is NOT in this file.** A site's skeleton (hero archetype, navigation,
+section paradigm, grid, interactions) comes from a **style pack** in
+`style-packs/` — pick one per build. Do not default every site to the same
+layout; that produces reskins. Read `style-packs/README.md` first, choose a pack
+that matches the business, then apply the craft below using that pack's structure.
+
+**Anti-"AI-slop" (always):** no excessive centered layouts, no purple gradients,
+no uniform rounded corners everywhere (intentional only in boutique-editorial),
+avoid Inter as the default, keep image crops ~4:5 (never 3:5 strips), verify
+mobile every time.
 
 ## Palette derivation
 
-Sample 4–6 colors from the business's own photos: one **ink** (darkest interior tone, e.g. navy cabinetry → `#1a2634`), one **accent** (their feature color — wall paint, awning, logo), one **warm neutral background** (cream `#faf7f1` family, never pure white), one **metallic/luxe accent** (brass `#b18a4f`) for kickers and stars, optionally one deep contrast (wine). Define all as CSS custom properties. Dark sections use ink; light sections alternate cream gradients.
+Sample 4–6 colors from the business's own photos: one **ink** (darkest interior tone, e.g. navy cabinetry → `#1a2634`), one **accent** (their feature color — wall paint, awning, logo), one **warm neutral background** (cream `#faf7f1` family, never pure white), one **metallic/luxe accent** (brass `#b18a4f`) for kickers and stars, optionally one deep contrast (wine). Define all as CSS custom properties. The pack decides how they're deployed (light bands vs. a dark canvas vs. paper spreads).
 
 ## Typography
 
-- Display: high-contrast serif (Cormorant Garamond 500–700 + italic) for h1–h3 and stat numbers.
-- Body/UI: light geometric sans (Jost 300–600), generous letterspacing on uppercase labels.
-- Brand wordmark = business name in display serif, `letter-spacing:0.34em` with matching `text-indent` to re-center, small letterspaced subtitle underneath in the metallic accent. This IS the logo.
-- Fluid sizes via `clamp()`; h1 ~`clamp(2.9rem, 6.4vw, 4.9rem)` with an italic accent-colored phrase.
+Each style pack names its own font personalities — **don't reuse one pairing
+everywhere** (that's a tell of reskinning). Examples in use: Cormorant Garamond +
+Jost (boutique-editorial), Fraunces + Outfit (lookbook), Bricolage Grotesque +
+Outfit (atelier-noir). General rules:
+
+- Pair one **display** voice (serif or characterful grotesque) with one **sans**
+  for small uppercase labels/UI; commit to a real personality (avoid Inter).
+- Brand wordmark = business name set in the pack's display face — this IS the logo.
+- Fluid sizes via `clamp()`; the h1 carries an accent-colored phrase.
 
 ## Self-hosting fonts
 
@@ -23,19 +41,25 @@ Sample 4–6 colors from the business's own photos: one **ink** (darkest interio
 
 Rounded square (radius ≈ 22% of size) in ink color, business initial in the display TTF at ~62% size optically centered, small metallic underline bar at 80% height. Render 512/192/180/32/16 PNG + multi-size .ico; hand-write an equivalent favicon.svg. Reference all in `<head>` + site.webmanifest.
 
-## Section order (one page)
+## Section structure → see the chosen style pack
 
-1. **Sticky header**: translucent + backdrop blur, shadow only after scroll; wordmark left, uppercase nav, phone pill button right; hamburger → slide-down panel ≤720px.
-2. **Hero**: status chip (live open/closed) → h1 with italic accent phrase → one-paragraph lede → two CTAs (call = primary pill, secondary ghost) → fact row (rating / founded year / walk-ins) above a hairline. Right: best interior photo in an arch (`border-radius:999px 999px 22px 22px`, `aspect-ratio:4/5`, heavy soft shadow) + floating white rating badge card. Photo column goes `order:-1` on mobile.
-3. **Ribbon**: ink background, one row of uppercase micro-items with small icons (services/walk-ins). Cheap, looks expensive.
-4. **About**: overlapping photo pair (main 4:3 + inset square with thick cream border) opposite kicker + title + lede + em-dash list.
-5. **Services**: 3×2 white cards — tinted rounded icon square (inline SVG line icons), serif h3, two-line description. Hover: translateY(-5px) + deeper shadow. End with a "call for pricing" note — never invent prices.
-6. **Gallery**: uniform square grid (see SKILL.md rule) with hover zoom + gradient overlay; lightbox with prev/next/esc/caption.
-7. **Feature section** (boutique/specialty): ink background, copy + tag pills left, 2×2 photo collage right (first figure spans 2 rows).
-8. **Reviews**: 3 white cards, oversized serif open-quote glyph, metallic stars, real quotes, "Google review" footer. Below: rating line + link to the Google reviews search URL.
-9. **Visit**: hours card (table from `hours.js`, today-row highlighted with a "TODAY" pill, open/closed chip on top) + contact card (address→directions link, tel:, socials, amenity pills) side by side; full-width 380px map embed below.
-10. **Footer**: ink; wordmark + blurb, visit column, hours column, copyright with JS year, back-to-top.
+The page skeleton (header type, hero archetype, the order and treatment of
+About / Services / Gallery / Feature / Reviews / Visit / Footer, grid logic) is
+defined by the **style pack** you picked in `style-packs/`. Every pack covers the
+same real content and keeps the same JS hooks; they differ in *how* it's laid out
+(cards vs. numbered index vs. full-bleed panels, top-bar vs. masthead vs.
+side-rail, etc.). Do not paste the boutique-editorial structure into every build.
+
+Constant across packs: services end with a "call for pricing" note (never invent
+prices); the gallery uses the uniform-grid OR filmstrip rule (see SKILL.md / pack)
+with a working lightbox; Visit builds its hours table from `js/hours.js` with the
+today-row highlighted and a live open/closed chip; the map is the keyless Google
+Maps embed.
 
 ## Micro-interactions
 
-`.reveal` fade-up (0.7s, stagger via `data-delay`), instant for above-fold and `prefers-reduced-motion`. Status chip dot: green glow when open, wine when closed. All buttons pill-shaped, uppercase, letterspaced.
+`.reveal` fade-up (0.7s, stagger via `data-delay`), instant for above-fold and
+`prefers-reduced-motion`. Status chip dot: green glow when open, accent/wine when
+closed. Button shape follows the pack (pill + uppercase in boutique-editorial;
+square solid/outline in lookbook and atelier-noir) — match the pack, don't
+default to pills everywhere.
