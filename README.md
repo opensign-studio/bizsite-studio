@@ -2,17 +2,19 @@
 
 Find small businesses that need a website, research them deeply, and build, test, and launch a polished site — the complete workflow, packaged. Distilled from a real end-to-end build ([tryst-salon](https://github.com/djmorgan26/tryst-salon), live at [tryst-salon.vercel.app](https://tryst-salon.vercel.app)).
 
-## Components
+## Skills
 
-| Type | Name | Purpose |
-|------|------|---------|
-| Command | `/find-businesses` | Prospect for businesses with no/bad websites by location, radius, category |
-| Command | `/build-site` | Full pipeline for one business: research → build → test → launch |
-| Skill | `business-finder` | Prospecting strategy, website-status detection, ranked output |
-| Skill | `business-research` | Fact gathering + verification rules + real-photo acquisition pipeline |
-| Skill | `site-builder` | Design playbook, static-site template, favicon/fonts, test suite, add-ons |
-| Skill | `launch-and-domains` | GitHub, Vercel (main-only deploys), ranked domain table with buy links |
-| Skill | `outreach` | Personable pitch emails: draft → user review → send via Gmail; follow-up rules; no fabricated claims about the business or the user |
+Five skills, one clean linear workflow. They auto-trigger from natural language —
+no separate slash commands (removed in 0.4.1 to avoid lookalike command/skill
+duplicates). Invoke explicitly with `/<skill>` if you like.
+
+| Skill | Purpose |
+|-------|---------|
+| `business-finder` | Prospect for businesses with no/bad websites by location, radius, category; ranked output |
+| `business-research` | Fact gathering + verification rules + real-photo acquisition pipeline |
+| `site-builder` | Style packs (distinct designs), static-site template, favicon/fonts, test suite, add-ons — plus the full one-pass build pipeline |
+| `launch-and-domains` | GitHub, Vercel (main-only deploys), ranked domain table with buy links |
+| `outreach` | Personable pitch emails: draft → user review → send via Gmail; follow-up rules; no fabricated claims about the business or the user |
 
 ## Requirements
 
@@ -20,9 +22,12 @@ Works in Claude Cowork and Claude Code. Expects these to be available on the mac
 
 ## Usage
 
-- `/find-businesses hair salons near Alpharetta GA, no website`
-- `/build-site Tryst Hair Salon & Boutique, Alpharetta GA`
-- Or just ask: "research this business", "build them a website", "suggest domains for it".
+Just ask in plain language — the right skill triggers automatically:
+
+- "find hair salons near Alpharetta GA with no website" → `business-finder`
+- "research Tryst Hair Salon & Boutique, Alpharetta GA" → `business-research`
+- "build them a website" → `site-builder` (runs the full research → build → test → launch pass)
+- "suggest domains for it" / "deploy it" → `launch-and-domains`
 
 ## Hard principles baked in
 

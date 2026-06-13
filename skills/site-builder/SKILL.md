@@ -38,6 +38,29 @@ Plain HTML + CSS + ES-module JS. No framework, no build step. Hosts anywhere (Ve
 5. **Write the tests** (see `references/testing-checklist.md`): hours/timezone logic, real-info assertions, asset existence, alt text, structure. Tests are the no-fabrication safety net — they hard-fail on placeholder text, mailto:, or hours drift between JS and JSON-LD.
 6. **Test in a real browser** before presenting: serve locally, check console errors and network 404s, click the lightbox and mobile nav, view mobile layout. See the gotchas in `references/testing-checklist.md` (occluded-window rendering freezes screenshots — verify states via JS, not pixels).
 
+## Full build in one pass (the whole pipeline)
+
+When asked to build a complete site for a business ("build a site for X",
+"make X a website"), run the whole bizsite-studio pipeline in one continuous
+pass, using the sibling skills in order — don't stop midway for questions that
+research or sensible defaults can answer:
+
+1. **Research** with `business-research` — verify every fact (hours, phone,
+   address, founding year, rating, reviews, services, amenities, socials) and
+   acquire the business's real photos. Never proceed on unverified/fabricated info.
+2. **Pick a style pack + build** (this skill) — choose the design direction,
+   derive palette/fonts from the brand, scaffold, favicons, self-host fonts, tests.
+3. **Test** — unit tests + live browser checks (incl. the 390px mobile check). Fix
+   everything before showing the user.
+4. **Launch (ask first)** — present the local site, then offer `launch-and-domains`
+   (GitHub repo, Vercel main-only deploy, ranked domain table).
+
+Create the project in a kebab-case folder named for the business, under the Open
+Sign workspace `sites/<slug>/` (one repo per client). Track progress with the task
+list. Never invent contact info, prices, reviews, or socials — leave unverifiable
+things out and say so. For capabilities beyond the static template, check
+`references/addons/` before improvising.
+
 ## Layout rules that must be right the first time
 
 - **Image crops stay balanced — ~4:5, never 3:5 strips.** Tall portrait crops look bad and got rejected; use `aspect-ratio:1` or `4/5` with `object-fit:cover`. The lightbox shows the uncropped original, so cropping tiles loses nothing.
